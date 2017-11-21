@@ -2,44 +2,37 @@ import java.util.ArrayList;
 
 public class Rentals {
 	
-	private double rentalDeposit, dailyCharge, rentalTotal;
-	private int rentalDuration;
+	private double deposit, dailyCharge;
+	private int duration;
+	private boolean isLate;
+	private Customer renter;
 
-	private ArrayList<Product> productList;
+	private ArrayList<Product> rental;
 	
 	//Default Constructor
 	public Rentals()
 	{
-		productList = new ArrayList<Product>();
+		rental = new ArrayList<Product>();
 	}
-	
-	//Prints receipt That includes customer name, address, phone number, a listing of each product and deposit amount, plus a total rental amount, and a projected rental duration
-	public void printReceipt()
-	{
-		
-	}
-	
-	
-	
 	
 	//Setters and Getters
+	public Customer getRenter()
+	{
+		return customer;
+	}
+	
+	public void setRenter(Customer renter)
+	{
+		this.renter = renter;
+	}
+	
 	public double getRentaDeposit() {
-		return rentalDeposit;
+		return deposit;
 	}
 
-	public void setRentaDeposit(double rentaDeposit) {
-		this.rentalDeposit = rentaDeposit;
+	public void setRentaDeposit(double deposit) {
+		this.deposit = deposit;
 	}
-
-	public double getRentalTotal() {
-		return rentalTotal;
-	}
-
-
-	public void setRentalTotal(double rentalTotal) {
-		this.rentalTotal = rentalTotal;
-	}
-
 
 	public double getDailyCharge() {
 		return dailyCharge;
@@ -53,20 +46,20 @@ public class Rentals {
 		return productList;
 	}
 
-	public void setProductList(ArrayList<Product> productList) {
-		this.productList = productList;
+	public void setProductList(ArrayList<Product> rental) {
+		this.rental = rental;
 	}
 
 	public void addProduct(Product product)
 	{
-		productList.add(product);
+		rental.add(product);
 	}
 	
 	public int getRentalDuration() {
-		return rentalDuration;
+		return duration;
 	}
 
-	public void setRentalDuration(int rentalDuration) {
-		this.rentalDuration = rentalDuration;
+	public void setRentalDuration(int duration) {
+		this.duration = duration;
 	}
 }
