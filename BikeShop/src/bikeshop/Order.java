@@ -3,51 +3,67 @@ package bikeshop;
 import java.util.ArrayList;
 
 /**
- * This class is composed from the Bike class; it contains a list of Bikes and methods for manipulating the list.
+ * This class is composed from the Product class and extends ArrayList.
  * @author Geoff
  *
  */
-public class Order {
+public class Order extends ArrayList<Product> {
 	
 	/**
-	 * The list representing an order of bikes.
+	 * 
 	 */
-	private ArrayList<Bike> bikeOrder;
+	private static final long serialVersionUID = -2134763355694794603L;
+
+	private Rental rental;
+	private Customer customer;
 	
 	/**
 	 * Default constructor, no parameters.
 	 */
 	public Order()
 	{
-		bikeOrder = new ArrayList<Bike>();	
+		
 	}
 	
-	/**
-	 * Overloaded constructor allowing passing an ArrayList of Bikes directly.
-	 * @param bikes ArrayList<Bike> representing order
-	 */
-	public Order(ArrayList<Bike> bikes)
-	{
-		this.bikeOrder = bikes;
+	public Rental getRental() {
+		return rental;
+	}
+
+	public void setRental(Rental rental) {
+		this.rental = rental;
 	}
 	
-	/**
-	 * Gets the list of bikes.
-	 * @return ArrayList<Bike> representing order list
-	 */
-	public ArrayList<Bike> getOrder()
+	//Prints receipt That includes customer name, address, phone number, 
+	//a listing of each product and deposit amount, plus a total rental amount, and a projected rental duration
+	public void printReceipt()
 	{
-		return this.bikeOrder;
+		System.out.println("Customer name: " + customer.getFirstName() + " " + customer.getLastName() + "\n"
+			+ customer.getAddress() + "\n"
+			+ customer.getPhone() + "\n"
+			+ getFullOrderAsString() + "\n"
+			+ rental.getRentalTotal() + "\n"
+			+ rental.getRentalDuration());
+		
 	}
 	
-	/**
-	 * Prints each bike in the list.
-	 */
-	public void printOrder()
-	{
-		for(Bike order : bikeOrder)
-			System.out.println(order.toString() + "\n");
+	public String getFullOrderAsString() {
+		
+		String s;
+		
+		if(this.toString().equals("[]")) {
+			s = "Customer did not buy any items\n";
+			}
+		else
+			s = "Customer purchased: \n" + this.toString() + "\n";
+		
+		if(rental != null) {
+			s = (s.concat("Rental: \n" + rental.getProductList().toString()));
+		}
+		
+		return s;
 	}
+
+
 	
 
 }
